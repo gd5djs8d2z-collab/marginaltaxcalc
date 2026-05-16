@@ -24,37 +24,37 @@
   // ── Network tools ─────────────────────────────────────────────────────────
   var NETWORK_TOOLS = [
     {
-      name: 'Ontario Take Home Calculator',
+      name: 'Ontario Take Home Calc',
       url: 'https://ontariotakehomecalc.ca',
       desc: 'See your full net pay after all deductions — income tax, CPP, EI, and OHP.',
       live: true,
     },
     {
-      name: 'Ontario Income Tax Calculator',
+      name: 'Ontario Income Tax Calc',
       url: 'https://ontarioincometaxcalc.ca',
       desc: 'Calculate your combined federal and Ontario income tax for 2026.',
       live: true,
     },
     {
-      name: 'Ontario Raise Calculator',
+      name: 'Ontario Raise Calc',
       url: 'https://ontarioraisecalc.ca',
       desc: 'Find out how much of a raise you actually keep after taxes in Ontario.',
       live: true,
     },
     {
-      name: 'CPP Calculator',
+      name: 'CPP Calc',
       url: 'https://cppcalc.ca',
       desc: 'Calculate your Canada Pension Plan contributions including CPP2 for 2026.',
       live: true,
     },
     {
-      name: 'EI Calculator Canada',
+      name: 'EI Calc',
       url: 'https://eicalc.ca',
       desc: 'Calculate your Employment Insurance premium for the 2026 tax year.',
       live: true,
     },
     {
-      name: 'Marginal Tax Calculator',
+      name: 'Marginal Tax Calc',
       url: 'https://marginaltaxcalc.ca',
       desc: 'Calculate your marginal tax rate on additional income in Ontario for 2026.',
       live: true,
