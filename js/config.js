@@ -7,7 +7,7 @@ const PROVINCE = 'ON';
 
 // Federal Income Tax Brackets (2026)
 const FEDERAL_BRACKETS = [
-  { min: 0,       max: 58523,  rate: 0.15   },
+  { min: 0,       max: 58523,  rate: 0.14   },
   { min: 58523,   max: 117045, rate: 0.205  },
   { min: 117045,  max: 181440, rate: 0.26   },
   { min: 181440,  max: 258482, rate: 0.29   },
@@ -16,8 +16,8 @@ const FEDERAL_BRACKETS = [
 
 // Federal Basic Personal Amount & credit rate
 const FEDERAL_BPA        = 16452;
-const FEDERAL_BPA_CREDIT = 0.15; // 15% credit rate (note: spec says 14% — using 15% per CRA T1 Gen 2026; locking at 14% per spec)
-// LOCKED per build spec: 14%
+// Federal credit rate = lowest bracket rate = 14% (legislated July 2025, applies full 2026 tax year)
+// Source: CRA T4032-ON 2026, Finance Canada
 const FEDERAL_CREDIT_RATE = 0.14;
 
 // Ontario Income Tax Brackets (2026)
