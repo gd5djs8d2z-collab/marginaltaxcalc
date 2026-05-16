@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Ontario Marginal Tax Calculator | marginaltaxcalc.ca</title>
+  <meta name="description" content="About marginaltaxcalc.ca — how our Ontario marginal tax calculator works, data sources, and methodology for 2026." />
+  <link rel="canonical" href="https://marginaltaxcalc.ca/about.html" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7744853829365165" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a class="site-logo" href="/">Marginal Tax Calc</a>
+      <nav aria-label="Primary navigation">
+        <ul class="header-nav">
+          <li><a href="/">Calculator</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <h1>About This Calculator</h1>
+    <p>How marginaltaxcalc.ca works, where the numbers come from, and what we built it for.</p>
+  </div>
+</section>
+
+<main class="page-content">
+
+  <h2>What We Built and Why</h2>
+  <p>Most tax calculators in Canada show you your annual take-home pay. That's useful — but it doesn't help you make decisions. When you're deciding whether to take on freelance work, accept a bonus, make an RRSP contribution, or withdraw from a registered account, the question isn't "what's my average rate?" It's "what rate will I pay on <em>this specific amount</em> of additional income?"</p>
+  <p>That's the marginal rate. And it's surprisingly hard to find — not because it's secret, but because it requires combining federal brackets, Ontario provincial brackets, the Ontario surtax, CPP, EI, and OHP all at once, at a specific income point. We built marginaltaxcalc.ca to do exactly that, accurately, for Ontario residents in 2026.</p>
+
+  <h2>Data Sources</h2>
+  <p>All rates and thresholds are sourced from official Canadian government publications:</p>
+  <ul>
+    <li><strong>CRA T4032-ON</strong> (Payroll Deductions Tables — Ontario, 2026): federal and Ontario income tax brackets, Basic Personal Amounts</li>
+    <li><strong>ESDC Employment Insurance Regulations</strong>: 2026 EI rate (1.63%), MIE ($68,900)</li>
+    <li><strong>CRA CPP Rate Notice (2026)</strong>: CPP1 rate (5.95%), YMPE ($74,600), CPP2 rate (4.00%), YAMPE ($85,000)</li>
+    <li><strong>Ontario Ministry of Finance</strong>: Ontario Health Premium tiered schedule</li>
+    <li><strong>Ontario Taxation Act</strong>: Ontario surtax thresholds and rates</li>
+  </ul>
+
+  <h2>Calculation Methodology</h2>
+  <p>The calculator uses an <strong>incremental difference method</strong>:</p>
+  <ol>
+    <li>Compute total tax (income tax + CPP + EI + OHP) at <em>current</em> income</li>
+    <li>Compute total tax at <em>current + additional</em> income</li>
+    <li>Divide the difference by the additional income amount</li>
+  </ol>
+  <p>This is the same approach used by CRA's bonus withholding method (Method 2 per T4130), and it captures the actual blended marginal rate across bracket transitions — not just the rate at a single point. The Ontario surtax, which is a non-linear function of Ontario basic tax, is computed correctly for both income levels before subtracting.</p>
+
+  <h2>Part of the Ontario Payroll Network</h2>
+  <p>marginaltaxcalc.ca is part of a cluster of free Ontario payroll and tax calculators. Related tools include:</p>
+  <ul>
+    <li><a href="https://ontariotakehomecalc.ca">Ontario Take Home Calculator</a></li>
+    <li><a href="https://ontarioincometaxcalc.ca">Ontario Income Tax Calculator</a></li>
+    <li><a href="https://ontarioraisecalc.ca">Ontario Raise Calculator</a></li>
+    <li><a href="https://cppcalc.ca">CPP Calculator</a></li>
+    <li><a href="https://eicalc.ca">EI Calculator Canada</a></li>
+  </ul>
+
+  <h2>Accuracy and Limitations</h2>
+  <p>This calculator is designed for employment income for Ontario residents. It does not model self-employment double CPP, Quebec abatement, capital gains inclusion rates, eligible dividend gross-up, or personal credits beyond the Basic Personal Amount. For a definitive tax calculation, use CRA-certified tax software or consult a Chartered Professional Accountant (CPA).</p>
+
+  <h2>Updates</h2>
+  <p>Rates are updated annually when CRA publishes the T4032-ON and ESDC releases EI and CPP parameters. The current build reflects 2026 rates as confirmed at publication time.</p>
+
+  <p><a href="/">← Back to Calculator</a></p>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand-name">Marginal Tax Calc</div>
+        <p>Free Ontario marginal tax rate calculator for 2026.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="/">Calculator</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="disclaimer.html">Disclaimer</a></li>
+          <li><a href="terms.html">Terms of Use</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>More Tools</h4>
+        <ul id="footer-tools-list"></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 marginaltaxcalc.ca — For general information only. Not tax advice.</span>
+      <span>Ontario, Canada</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/network.js"></script>
+</body>
+</html>
