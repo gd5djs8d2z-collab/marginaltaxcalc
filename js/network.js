@@ -21,7 +21,7 @@
     }
   })();
 
-  // ── Network tools ─────────────────────────────────────────────────────────
+  // ── Network tools — Ontario Payroll cluster only ───────────────────────────
   var NETWORK_TOOLS = [
     {
       name: 'Ontario Take Home Calc',
@@ -41,28 +41,11 @@
       desc: 'Find out how much of a raise you actually keep after taxes in Ontario.',
       live: true,
     },
-    {
-      name: 'CPP Calc',
-      url: 'https://cppcalc.ca',
-      desc: 'Calculate your Canada Pension Plan contributions including CPP2 for 2026.',
-      live: true,
-    },
-    {
-      name: 'EI Calc',
-      url: 'https://eicalc.ca',
-      desc: 'Calculate your Employment Insurance premium for the 2026 tax year.',
-      live: true,
-    },
-    {
-      name: 'Marginal Tax Calc',
-      url: 'https://marginaltaxcalc.ca',
-      desc: 'Calculate your marginal tax rate on additional income in Ontario for 2026.',
-      live: true,
-    },
   ];
 
   var CURRENT_HOST = window.location.hostname.replace(/^www\./, '');
 
+  // ── Related tools (main page) ─────────────────────────────────────────────
   function renderRelatedTools() {
     var container = document.getElementById('related-tools-list');
     if (!container) return;
@@ -87,24 +70,53 @@
     container.innerHTML = html;
   }
 
-  function renderFooterTools() {
-    var container = document.getElementById('footer-tools-list');
+  // ── Footer — 3-column: PAGES / LEGAL / RELATED TOOLS ─────────────────────
+  function renderFooter() {
+    var container = document.getElementById('network-footer');
     if (!container) return;
 
     var tools = NETWORK_TOOLS.filter(function (t) {
       return t.live && t.url.indexOf(CURRENT_HOST) === -1;
     });
 
-    var html = '';
+    var toolLinks = '';
     tools.forEach(function (t) {
-      html += '<li><a href="' + t.url + '" rel="noopener">' + t.name + '</a></li>';
+      toolLinks += '<a href="' + t.url + '" rel="noopener">' + t.name + '</a>';
     });
-    container.innerHTML = html;
+
+    container.innerHTML =
+      '<div class="footer-grid">' +
+        '<div class="footer-col">' +
+          '<div class="footer-brand-name">Marginal Tax Calc</div>' +
+          '<p>Free Ontario marginal tax rate calculator for 2026. Combines federal and provincial brackets, CPP, EI, and surtax.</p>' +
+        '</div>' +
+        '<div class="footer-col">' +
+          '<h4>Pages</h4>' +
+          '<a href="index.html">Home</a>' +
+          '<a href="faq.html">FAQ</a>' +
+          '<a href="about.html">About</a>' +
+          '<a href="contact.html">Contact</a>' +
+        '</div>' +
+        '<div class="footer-col">' +
+          '<h4>Legal</h4>' +
+          '<a href="privacy-policy.html">Privacy Policy</a>' +
+          '<a href="disclaimer.html">Disclaimer</a>' +
+          '<a href="terms.html">Terms of Use</a>' +
+        '</div>' +
+        '<div class="footer-col">' +
+          '<h4>Related Tools</h4>' +
+          toolLinks +
+        '</div>' +
+      '</div>' +
+      '<div class="footer-bottom">' +
+        '<span>\u00a9 2026 marginaltaxcalc.ca \u2014 For general information only. Not tax advice.</span>' +
+        '<span>Ontario, Canada</span>' +
+      '</div>';
   }
 
   document.addEventListener('DOMContentLoaded', function () {
     renderRelatedTools();
-    renderFooterTools();
+    renderFooter();
   });
 
 })();

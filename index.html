@@ -35,20 +35,19 @@
 </head>
 <body>
 
-<!-- ── Header ── -->
+<!-- ── Site Header ── -->
 <header class="site-header">
-  <div class="container">
-    <div class="header-inner">
-      <a class="site-logo" href="/">Marginal Tax Calc</a>
-      <nav aria-label="Primary navigation">
-        <ul class="header-nav">
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
+  <div class="header-inner">
+    <a href="index.html" class="site-logo">
+      <span class="logo-maple">🍁</span>
+      <span class="logo-text">Marginal Tax Calc</span>
+    </a>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="faq.html">FAQ</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </div>
 </header>
 
@@ -425,7 +424,7 @@
 
     <!-- ── Related Tools ── -->
     <section class="content-section">
-      <h2>Related Ontario Payroll Calculators</h2>
+      <h2>Related Tools</h2>
       <p>Other free tools in the Ontario Payroll calculator network:</p>
       <div class="tools-grid" id="related-tools-list">
         <!-- Populated by network.js -->
@@ -437,42 +436,7 @@
 
 <!-- ── Footer ── -->
 <footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <div class="footer-brand-name">Marginal Tax Calc</div>
-        <p>Free Ontario marginal tax rate calculator for 2026. Combines federal and provincial brackets, CPP, EI, and surtax.</p>
-        <p style="margin-top:8px; font-size:0.8rem; color:var(--text-muted);">Rates: CRA T4032-ON · ESDC 2026</p>
-      </div>
-      <div class="footer-col">
-        <h4>Pages</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="privacy-policy.html">Privacy Policy</a></li>
-          <li><a href="disclaimer.html">Disclaimer</a></li>
-          <li><a href="terms.html">Terms of Use</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>More Tools</h4>
-        <ul id="footer-tools-list">
-          <!-- Populated by network.js -->
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 marginaltaxcalc.ca — For general information only. Not tax advice.</span>
-      <span>Ontario, Canada</span>
-    </div>
-  </div>
+  <div id="network-footer"></div>
 </footer>
 
 <script src="js/config.js"></script>
