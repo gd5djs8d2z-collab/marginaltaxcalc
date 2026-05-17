@@ -399,7 +399,8 @@ img { max-width: 100%; display: block; }
   min-height: 90px;
 }
 @media (max-width: 640px) {
-  .ad-slot { min-height: 0; margin: 12px 0; }
+  .ad-slot { min-height: 0; margin: 8px 0; }
+  .ad-slot ins.adsbygoogle { height: 0 !important; max-height: 0 !important; overflow: hidden !important; }
 }
 
 /* ── Section content ── */
