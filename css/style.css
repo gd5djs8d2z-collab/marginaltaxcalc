@@ -404,8 +404,8 @@ img { max-width: 100%; display: block; }
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 32px;
-  margin-bottom: 24px;
+  padding: 28px 28px 24px;
+  margin-bottom: 20px;
 }
 
 @media (max-width: 599px) { .content-section { padding: 20px 16px; } }

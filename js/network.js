@@ -106,6 +106,13 @@
         '<div class="footer-col">' +
           '<h4>RELATED TOOLS</h4>' +
           toolLinks +
+                '</div>' +
+        '<div class="footer-col">' +
+          '<h4>MORE TOOLS</h4>' +
+          '<a href="https://calc-hq.ca" class="more-tools-link" target="_blank" rel="noopener noreferrer">' +
+            '<span class="more-tools-title">Calc-HQ.ca</span>' +
+            '<span class="subtext">Canadian payroll, tax, and contribution calculators</span>' +
+          '</a>' +
         '</div>' +
       '</div>' +
       '<div class="footer-bottom">' +
@@ -115,7 +122,6 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    renderRelatedTools();
     renderFooter();
   });
 
