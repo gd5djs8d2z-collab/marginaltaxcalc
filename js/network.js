@@ -91,20 +91,20 @@
           '<p>Free Ontario marginal tax rate calculator for 2026. Combines federal and provincial brackets, CPP, EI, and surtax.</p>' +
         '</div>' +
         '<div class="footer-col">' +
-          '<h4>Pages</h4>' +
+          '<h4>PAGES</h4>' +
           '<a href="index.html">Home</a>' +
           '<a href="faq.html">FAQ</a>' +
           '<a href="about.html">About</a>' +
           '<a href="contact.html">Contact</a>' +
         '</div>' +
         '<div class="footer-col">' +
-          '<h4>Legal</h4>' +
+          '<h4>LEGAL</h4>' +
           '<a href="privacy-policy.html">Privacy Policy</a>' +
           '<a href="disclaimer.html">Disclaimer</a>' +
           '<a href="terms.html">Terms of Use</a>' +
         '</div>' +
         '<div class="footer-col">' +
-          '<h4>Related Tools</h4>' +
+          '<h4>RELATED TOOLS</h4>' +
           toolLinks +
         '</div>' +
       '</div>' +
