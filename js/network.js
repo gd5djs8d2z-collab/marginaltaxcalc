@@ -24,21 +24,24 @@
   // ── Network tools — Ontario Payroll cluster only ───────────────────────────
   var NETWORK_TOOLS = [
     {
-      name: 'Ontario Take Home Calc',
+      name: 'OntarioTakeHomeCalc.ca',
+      label: 'OntarioTakeHomeCalc.ca — Estimate your Ontario net pay after all deductions',
       url: 'https://ontariotakehomecalc.ca',
-      desc: 'See your full net pay after all deductions — income tax, CPP, EI, and OHP.',
+      desc: 'Estimate your Ontario net pay after all deductions',
       live: true,
     },
     {
-      name: 'Ontario Income Tax Calc',
+      name: 'OntarioIncomeTaxCalc.ca',
+      label: 'OntarioIncomeTaxCalc.ca — Calculate your combined federal and Ontario income tax',
       url: 'https://ontarioincometaxcalc.ca',
-      desc: 'Calculate your combined federal and Ontario income tax for 2026.',
+      desc: 'Calculate your combined federal and Ontario income tax',
       live: true,
     },
     {
-      name: 'Ontario Raise Calc',
+      name: 'OntarioRaiseCalc.ca',
+      label: 'OntarioRaiseCalc.ca — Calculate the impact of a raise on your take-home pay',
       url: 'https://ontarioraisecalc.ca',
-      desc: 'Find out how much of a raise you actually keep after taxes in Ontario.',
+      desc: 'Calculate the impact of a raise on your take-home pay',
       live: true,
     },
   ];
@@ -81,7 +84,7 @@
 
     var toolLinks = '';
     tools.forEach(function (t) {
-      toolLinks += '<a href="' + t.url + '" rel="noopener">' + t.name + '</a>';
+      toolLinks += '<a href="' + t.url + '" rel="noopener">' + t.label + '</a>';
     });
 
     container.innerHTML =
