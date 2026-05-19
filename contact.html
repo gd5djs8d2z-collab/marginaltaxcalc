@@ -34,25 +34,48 @@
   </div>
 </section>
 
-<main class="page-content">
+<div class="page-body">
 
   <h2>Get in Touch</h2>
-  <p>We welcome feedback on the calculator — especially if you believe a rate or threshold needs correction, or if you've found a scenario that produces an unexpected result.</p>
+  <p>Use the form below to send us a message. We aim to respond within 2–3 business days. For general questions about Ontario marginal tax rates, CPP, or EI, you may also find answers in our <a href="faq.html">FAQ</a>.</p>
 
-  <p>You can reach us at: <strong>hello@marginaltaxcalc.ca</strong></p>
+  <div class="info-box" style="margin-bottom:24px">
+    <p style="margin:0"><strong>Partnership inquiries:</strong> <a href="mailto:partnerships@calc-hq.ca" style="color:inherit;font-weight:600;">partnerships@calc-hq.ca</a></p>
+  </div>
 
-  <h2>Rate Corrections</h2>
-  <p>If you believe a bracket, threshold, or rate is incorrect, please cite the official CRA or ESDC source publication so we can verify and update promptly. We take accuracy seriously and aim to correct verified rate errors within 24 hours of notification.</p>
+  <form class="contact-form" name="contact" onsubmit="handleContactSubmit(event)">
+    <div>
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+    </div>
+    <div>
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+    </div>
+    <div>
+      <label for="subject">Subject</label>
+      <input type="text" id="subject" name="subject" placeholder="e.g. Rate correction, question about Ontario surtax">
+    </div>
+    <div>
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Your message..." required></textarea>
+    </div>
+    <button type="submit" class="calc-btn">Send Message</button>
+  </form>
 
-  <h2>What We Can't Help With</h2>
-  <p>We are not tax professionals and cannot provide individual tax advice. For personal tax planning — RRSP strategy, income splitting, capital gains optimization, business income structuring, or audit support — please consult a <strong>Chartered Professional Accountant (CPA)</strong> licensed in Ontario.</p>
+  <h2>What We Can Help With</h2>
   <ul>
-    <li><a href="https://www.cpaontario.ca/public/find-a-cpa" rel="noopener">Find a CPA in Ontario — CPA Ontario</a></li>
-    <li><a href="https://www.canada.ca/en/revenue-agency.html" rel="noopener">Canada Revenue Agency</a></li>
+    <li>Corrections to tax rates or thresholds in the calculator</li>
+    <li>Clarification on how marginal rates or surtax are calculated</li>
+    <li>Reporting a bug or unexpected result</li>
+    <li>General feedback on the tool or site</li>
+    <li>Questions about the calc-hq.ca network</li>
   </ul>
 
-  <p><a href="/">← Back to Calculator</a></p>
-</main>
+  <h2>What We Cannot Help With</h2>
+  <p>We are not tax professionals and cannot provide personalized tax advice, payroll advice, or assist with your specific tax return. For those needs, please consult a Certified Professional Accountant (CPA) or use the CRA’s official services at <a href="https://www.canada.ca/en/revenue-agency.html" target="_blank" rel="noopener">canada.ca</a>.</p>
+
+</div>
 
 <footer class="site-footer">
   <div class="container">

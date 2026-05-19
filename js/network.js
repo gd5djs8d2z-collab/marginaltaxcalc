@@ -41,18 +41,6 @@
       desc: 'Find out how much of a raise you actually keep after taxes in Ontario.',
       live: true,
     },
-    {
-      name: 'CPP Calc',
-      url: 'https://cppcalc.ca',
-      desc: 'Calculate your Canada Pension Plan contributions based on current CRA rates and income thresholds.',
-      live: true,
-    },
-    {
-      name: 'EI Calc',
-      url: 'https://eicalc.ca',
-      desc: 'Calculate your Employment Insurance premiums based on insurable earnings and the 2026 MIE ceiling.',
-      live: true,
-    },
   ];
 
   var CURRENT_HOST = window.location.hostname.replace(/^www\./, '');
