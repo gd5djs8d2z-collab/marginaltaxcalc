@@ -711,6 +711,12 @@ details p {
 }
 
 /* ── Inner pages ── */
+.page-body {
+  max-width: var(--content-width);
+  margin: 32px auto;
+  padding: 0 24px;
+}
+
 .page-hero {
   background: var(--accent);
   color: #fff;
