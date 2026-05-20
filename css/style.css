@@ -758,6 +758,89 @@ details p {
 .page-content a { color: var(--accent); }
 .page-content a:hover { color: var(--accent-hover); }
 
+/* ─── INFO-BOX ───────────────────────────────────────────────────────────────── */
+.info-box {
+  background: var(--accent-light);
+  border: 1px solid #b8d8c4;
+  border-left: 4px solid var(--accent-mid);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+.info-box a { font-size: 0.875rem; }
+
+/* ─── CONTACT FORM ───────────────────────────────────────────────────────────── */
+.contact-form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin: 20px 0 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.contact-form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.contact-form label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.92rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: var(--text-primary);
+  background: var(--surface);
+  transition: border-color 0.15s, box-shadow 0.15s;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--accent-mid);
+  box-shadow: 0 0 0 3px rgba(45,122,71,0.12);
+}
+.contact-form textarea {
+  min-height: 110px;
+  resize: vertical;
+  line-height: 1.55;
+}
+
+/* ─── SUBMIT BUTTON ──────────────────────────────────────────────────────────── */
+.calc-btn {
+  display: inline-block;
+  width: 100%;
+  padding: 13px 28px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'IBM Plex Sans', sans-serif;
+  transition: background 0.15s, box-shadow 0.15s;
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  text-align: center;
+}
+.calc-btn:hover {
+  background: var(--accent-hover);
+}
+
 /* ─── RESPONSIVE — footer & related (benchmark-aligned) ─────────────────────── */
 @media (max-width: 640px) {
   .main-content { padding: 16px 14px 40px; }
