@@ -182,7 +182,14 @@ img { max-width: 100%; display: block; }
   box-shadow: var(--shadow);
   overflow: hidden;
   margin-bottom: 28px;
-  border: none;
+}
+.calc-header {
+  background: var(--accent-light);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 @media (max-width: 599px) { .calc-card { padding: 0; } }
@@ -191,23 +198,27 @@ img { max-width: 100%; display: block; }
 .trust-strip {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 6px 10px;
-  font-size: 0.78rem;
-  color: var(--text-secondary);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 16px;
   margin-bottom: 20px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
 }
 .ts-item { display: flex; align-items: center; gap: 4px; }
-.ts-check { color: var(--accent-mid); font-weight: 700; }
-.ts-sep { color: var(--text-muted); }
+.ts-item span { color: var(--accent-mid); font-weight: 700; }
+.ts-sep { color: var(--border-2); font-size: 0.75rem; }
 
-.calc-card h2 {
+.calc-header h2 {
   font-size: 1.05rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--accent);
-  margin-bottom: 0;
-  padding: 0;
-  border-bottom: none;
+  margin: 0;
 }
+.calc-icon { font-size: 1.2rem; }
 
 /* ── Form ── */
 .form-grid {
