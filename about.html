@@ -7,7 +7,7 @@
   <meta name="description" content="About marginaltaxcalc.ca — how our Ontario marginal tax calculator works, data sources, and methodology for 2026." />
   <link rel="canonical" href="https://marginaltaxcalc.ca/about.html" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7744853829365165" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css?v=marginal-v2" />
 </head>
 <body>
 
@@ -18,14 +18,26 @@
       <span class="logo-maple">🍁</span>
       <span class="logo-text">Marginal Tax Calc</span>
     </a>
-    <nav class="site-nav">
+    <nav class="site-nav" aria-label="Main navigation">
       <a href="index.html">Home</a>
       <a href="faq.html">FAQ</a>
-      <a href="about.html">About</a>
+      <a href="about.html" class="active">About</a>
       <a href="contact.html">Contact</a>
     </nav>
+    <button class="hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+
+<!-- Mobile nav overlay -->
+<div class="mobile-nav-overlay" id="mobile-overlay"></div>
+<nav class="mobile-nav" id="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="faq.html">FAQ</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</nav>
 
 <section class="page-hero">
   <div class="container">
@@ -59,14 +71,6 @@
   </ol>
   <p>This is the same approach used by CRA's bonus withholding method (Method 2 per T4130), and it captures the actual blended marginal rate across bracket transitions — not just the rate at a single point. The Ontario surtax, which is a non-linear function of Ontario basic tax, is computed correctly for both income levels before subtracting.</p>
 
-  <h2>Part of the Ontario Payroll Network</h2>
-  <p>marginaltaxcalc.ca is part of a cluster of free Ontario payroll and tax calculators. Related tools include:</p>
-  <ul>
-    <li><a href="https://ontariotakehomecalc.ca">Ontario Take Home Calculator</a></li>
-    <li><a href="https://ontarioincometaxcalc.ca">Ontario Income Tax Calculator</a></li>
-    <li><a href="https://ontarioraisecalc.ca">Ontario Raise Calculator</a></li>
-  </ul>
-
   <h2>Accuracy and Limitations</h2>
   <p>This calculator is designed for employment income for Ontario residents. It does not model self-employment double CPP, Quebec abatement, capital gains inclusion rates, eligible dividend gross-up, or personal credits beyond the Basic Personal Amount. For a definitive tax calculation, use CRA-certified tax software or consult a Chartered Professional Accountant (CPA).</p>
 
@@ -79,9 +83,9 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
-      <div class="footer-col footer-brand">
-        <div class="footer-brand-name">Marginal Tax Calc</div>
-        <p>Free Ontario marginal tax rate calculator for 2026. Combines federal and provincial brackets, CPP, EI, and surtax.</p>
+      <div class="footer-brand">
+        <div class="logo">🍁 MarginalTaxCalc.ca</div>
+        <p>Ontario marginal tax rate calculations for 2026. All calculations run in your browser. No data stored.</p>
       </div>
       <div class="footer-col">
         <h4>PAGES</h4>
@@ -98,26 +102,40 @@
       </div>
       <div class="footer-col">
         <h4>RELATED TOOLS</h4>
-        <a href="https://ontariotakehomecalc.ca" rel="noopener">OntarioTakeHomeCalc.ca &#x2014; Estimate your Ontario net pay after all deductions</a>
-        <a href="https://ontarioincometaxcalc.ca" rel="noopener">OntarioIncomeTaxCalc.ca &#x2014; Calculate your combined federal and Ontario income tax</a>
-        <a href="https://ontarioraisecalc.ca" rel="noopener">OntarioRaiseCalc.ca &#x2014; Calculate the impact of a raise on your take-home pay</a>
-      </div>
-      <div class="footer-col">
-        <h4>MORE TOOLS</h4>
-        <a href="https://calc-hq.ca" class="more-tools-link" target="_blank" rel="noopener noreferrer">
-          <span class="more-tools-title">Calc-HQ.ca</span>
-          <span class="subtext">Canadian payroll, tax, and contribution calculators</span>
-        </a>
+        <div id="related-tools"></div>
+        <a href="https://calc-hq.ca/" class="more-tools-link" rel="noopener"><strong>More Tools</strong> → Calc-HQ.ca</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 marginaltaxcalc.ca — For general information only. Not tax advice.</span>
-      <span>Ontario, Canada</span>
+      <span>© 2026 MarginalTaxCalc.ca — Part of the <a href="https://calc-hq.ca/" rel="noopener">Calc-HQ.ca</a> network</span>
+      <span>For informational purposes only. Not tax advice.</span>
     </div>
   </div>
 </footer>
 
 <script src="js/config.js"></script>
 <script src="js/network.js"></script>
+<script>
+  var hamburger = document.querySelector('.hamburger');
+  var mobileNav = document.getElementById('mobile-nav');
+  var overlay = document.getElementById('mobile-overlay');
+  function toggleMenu() {
+    var isOpen = hamburger.classList.toggle('active');
+    mobileNav.classList.toggle('active', isOpen);
+    overlay.classList.toggle('active', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+  }
+  function closeMenu() {
+    hamburger.classList.remove('active');
+    mobileNav.classList.remove('active');
+    overlay.classList.remove('active');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+  if (hamburger) {
+    hamburger.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', closeMenu);
+    mobileNav.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', closeMenu); });
+  }
+</script>
 </body>
 </html>

@@ -31,7 +31,7 @@
   <!-- AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7744853829365165" crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css?v=marginal-v2" />
   <meta name="google-site-verification" content="PgO37bBKcFoncwsiUF5dKUsod-m10dEnrMXLLcPaNaY" />
 </head>
 <body>
@@ -43,14 +43,26 @@
       <span class="logo-maple">🍁</span>
       <span class="logo-text">Marginal Tax Calc</span>
     </a>
-    <nav class="site-nav">
-      <a href="index.html">Home</a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="index.html" class="active">Home</a>
       <a href="faq.html">FAQ</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
+    <button class="hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+
+<!-- Mobile nav overlay -->
+<div class="mobile-nav-overlay" id="mobile-overlay"></div>
+<nav class="mobile-nav" id="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="faq.html">FAQ</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</nav>
 
 <!-- ── Hero ── -->
 <section class="hero">
@@ -340,90 +352,11 @@
       <p style="margin-top:12px; font-size:.85rem; color:var(--text-muted);">Note: "Approximate" figures reflect the incremental tax method used by this calculator. Minor differences from year-end T1 filing may occur due to rounding and mid-bracket transitions. For tax-planning decisions, verify with a CPA or tax advisor.</p>
     </section>
 
-    <!-- ── Data Sourcing ── -->
-    <section class="content-section">
-      <h2>Data Sourcing &amp; Methodology</h2>
-      <p>All rates and thresholds used by this calculator are sourced from official Canadian government publications:</p>
-      <ul>
-        <li><strong>CRA T4032-ON (2026 Payroll Deductions Tables — Ontario)</strong> — federal and Ontario income tax brackets, Basic Personal Amounts, and credit rates. Published by the Canada Revenue Agency.</li>
-        <li><strong>ESDC Employment Insurance Regulations (2026)</strong> — EI premium rate (1.63%) and maximum insurable earnings ($68,900), published by Employment and Social Development Canada.</li>
-        <li><strong>CRA Canada Pension Plan — Contribution Rates and Maximums (2026)</strong> — CPP1 rate (5.95%), YMPE ($74,600), CPP2 rate (4.00%), and YAMPE ($85,000), as confirmed by CRA Notice 2025-CPP.</li>
-        <li><strong>Ontario Ministry of Finance — Ontario Health Premium Schedule (2026)</strong> — the tiered OHP levy applied at filing.</li>
-      </ul>
-      <p>The calculation engine uses an <strong>incremental difference method</strong>: it computes total tax at your current income, then at (current + additional) income, and the difference is the marginal tax on the additional amount. This is the same approach used by CRA's own withholding tables for lump-sum payments (bonus withholding method 2).</p>
-    </section>
 
-    <!-- ── Limitations ── -->
-    <section class="content-section">
-      <h2>Limitations</h2>
-      <p>This tool provides an accurate estimate for most employment-income scenarios, but it has specific limitations you should know:</p>
-      <ol>
-        <li><strong>Employment income only.</strong> The CPP and EI calculations assume the additional income is from an employer–employee relationship. Self-employed income attracts double CPP contributions (both employee and employer share: 11.90%), and EI premiums may not apply at all to self-employment.</li>
-        <li><strong>Ontario residents only.</strong> The provincial rates, surtax schedule, and OHP are specific to Ontario. Quebec, Alberta, and other provinces have entirely different provincial rate structures. Do not use this calculator for other provinces.</li>
-        <li><strong>No RRSP, pension, or deduction adjustments.</strong> The calculator computes tax on gross income. If your additional income increases your RRSP contribution room and you plan to immediately offset it with a deduction, your actual marginal rate will be lower. Similarly, pension adjustments, union dues, childcare deductions, and other above-the-line items are not modelled.</li>
-        <li><strong>No tax credits beyond the Basic Personal Amount.</strong> The Age Amount, Disability Tax Credit, Canada Caregiver Credit, medical expenses, charitable donations, and other credits are not included. Your actual tax bill may be lower.</li>
-        <li><strong>Quebec Abatement not applicable.</strong> If you were a Quebec resident, the federal Quebec abatement (16.5% of basic federal tax) would reduce federal tax. This calculator does not apply that abatement.</li>
-        <li><strong>Capital gains and dividends require separate treatment.</strong> Capital gains are taxed at 50% inclusion (or 2/3 for gains above $250,000 on the new 2024+ rules). Eligible dividends carry a gross-up and dividend tax credit that changes the effective rate significantly. This calculator models employment and self-employment income only.</li>
-      </ol>
-    </section>
 
-    <!-- ── FAQ ── -->
-    <section class="content-section">
-      <h2>Frequently Asked Questions</h2>
-      <div id="faq-list">
 
-        <details>
-          <summary>What is the highest marginal tax rate in Ontario in 2026?</summary>
-          <p>The top combined marginal rate in Ontario is approximately <strong>53.53%</strong> on income above $258,482. This is composed of the 33% federal rate, 13.16% Ontario rate, and the full Ontario surtax (56% of the Ontario basic tax). CPP and EI contributions are capped well below this income level and don't add to the top rate. This makes Ontario one of the highest-tax jurisdictions in North America for top earners — only Quebec and British Columbia (for certain income types) approach this level.</p>
-        </details>
 
-        <details>
-          <summary>Is my marginal rate the same as my tax bracket?</summary>
-          <p>Not exactly. Your <strong>tax bracket</strong> refers to the rate that applies to the top slice of your income within a single tax system (e.g., you're in the federal 20.5% bracket). Your <strong>marginal rate</strong> is the combined effective rate from all overlapping systems — federal, Ontario, CPP, EI, and OHP — on that same slice of income. For most working Ontarians, the true marginal rate is 15–25 percentage points higher than their federal bracket alone. That's why this calculator exists: to give you the real number.</p>
-        </details>
 
-        <details>
-          <summary>What is the Ontario surtax and who pays it?</summary>
-          <p>The Ontario surtax is a tax on top of Ontario income tax. Once your Ontario basic tax (before surtax) exceeds <strong>$5,818</strong>, an additional 20% is applied to the excess. Once it exceeds <strong>$7,446</strong>, another 36% applies on top of that. In practical terms, these thresholds are reached at roughly $70,000–$90,000 of taxable income, depending on your credits. For a household with two earners, each person's individual income determines their own surtax separately. The surtax means Ontario's effective top provincial rate is not 13.16% but closer to 20.53%.</p>
-        </details>
-
-        <details>
-          <summary>How does this calculator handle a bonus at work?</summary>
-          <p>If you're wondering how much of a year-end bonus you'll keep, enter your base salary as "current income" and your bonus as the "additional income." The calculator computes the marginal tax on the bonus amount using the same incremental method that CRA requires employers to use when withholding tax on bonuses (the "bonus withholding method" per T4130 guide). Note that your employer may withhold at the marginal rate, but your final tax is settled when you file your T1 return, which may result in a refund if you have deductions or credits not captured at source.</p>
-        </details>
-
-        <details>
-          <summary>I'm self-employed. Can I use this calculator?</summary>
-          <p>Partially. The income tax (federal + Ontario) portion will be accurate. However, self-employed individuals pay <strong>both the employee and employer share</strong> of CPP — 11.90% total instead of 5.95% — so the CPP component shown will be half of what you'll actually owe. EI premiums for self-employed individuals are optional under the ESDC self-employment EI program. If you're self-employed, add the employer CPP share separately: for income between $3,500 and $74,600, multiply the eligible income by an additional 5.95%.</p>
-        </details>
-
-        <details>
-          <summary>What is CPP2 and does it affect my marginal rate?</summary>
-          <p>CPP2 is a second-tier Canada Pension Plan contribution introduced in 2024 and continuing in 2026. It applies to employment income between the Year's Maximum Pensionable Earnings (YMPE: <strong>$74,600</strong>) and the Year's Additional Maximum Pensionable Earnings (YAMPE: <strong>$85,000</strong>). The rate is 4.00%, with a maximum contribution of $416.00. If your additional income falls in this $74,600–$85,000 range, CPP2 adds 4 percentage points to your marginal rate — invisible in a simple bracket lookup but captured here. Above $85,000, CPP2 is capped and no longer incremental.</p>
-        </details>
-
-        <details>
-          <summary>Does this include the Ontario Health Premium?</summary>
-          <p>Yes. The Ontario Health Premium (OHP) is a levy assessed at filing and deducted at source. The 2026 schedule ranges from $0 (income under $20,000) up to $900 (income over $200,000). Because it's tiered, moving from one tier to another adds a one-time step increase in your OHP liability. This calculator uses the official OHP tiered schedule and computes the incremental OHP on your additional income. At most income levels, the OHP increment is small but is included for accuracy.</p>
-        </details>
-
-        <details>
-          <summary>My employer is withholding less tax than this calculator shows — why?</summary>
-          <p>Employer payroll withholding is based on annual projections that may not account for year-to-date income from a prior job, investment income, or side income. Your employer only knows what you've told them on your TD1 and TD1ON forms. If your total income is higher than projected (due to a second job, freelance income, RRSP withdrawals, etc.), you may face a tax balance owing at filing. This calculator shows what you'll actually owe based on your total 2026 income — useful for planning how much to set aside or whether to request additional withholding from your employer.</p>
-        </details>
-
-        <details>
-          <summary>Should I factor in the marginal rate when deciding whether to contribute to my RRSP?</summary>
-          <p>Yes — that's one of the most powerful applications. An RRSP contribution reduces your taxable income, so you get back your marginal rate as an immediate refund. If your marginal rate is 43%, a $10,000 RRSP contribution generates approximately $4,300 in tax refund (or reduces tax owing by that amount). The higher your marginal rate now, the more valuable the RRSP deduction. The benefit is most pronounced when you expect to be in a lower bracket in retirement (which is often the case). This calculator lets you see your 2026 marginal rate precisely — use that number as your RRSP deduction multiplier.</p>
-        </details>
-
-        <details>
-          <summary>What's the difference between marginal and effective rate?</summary>
-          <p>The <strong>effective rate</strong> (also called average rate) is total tax paid divided by total income. It describes your overall tax burden. The <strong>marginal rate</strong> is the rate on the <em>next</em> dollar — relevant for every financial decision at the margin: taking on freelance work, contributing to an RRSP, accepting a raise. A person earning $85,000 might have an effective rate of around 22% (meaning they pay 22% of all $85,000 to various taxes) while their marginal rate on a $5,000 bonus is around 43%. The effective rate describes your past; the marginal rate shapes your decisions.</p>
-        </details>
-
-      </div>
-    </section>
 
     <!-- Ad slot 3 -->
     <div class="ad-slot">
@@ -436,16 +369,70 @@
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
+    <!-- Methodology link -->
+    <p style="text-align:center; margin:28px 0 8px; font-size:0.88rem;"><a href="https://calc-hq.ca/methodology/marginal-tax/" style="color:var(--accent); font-weight:600;">Full methodology: Marginal Tax Calculator – Calc-HQ.ca</a></p>
+
   </div><!-- /container -->
 </main>
 
 <!-- ── Footer ── -->
 <footer class="site-footer">
-  <div id="network-footer"></div>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">🍁 MarginalTaxCalc.ca</div>
+        <p>Ontario marginal tax rate calculations for 2026. All calculations run in your browser. No data stored.</p>
+      </div>
+      <div class="footer-col">
+        <h4>PAGES</h4>
+        <a href="index.html">Home</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>LEGAL</h4>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="terms.html">Terms of Use</a>
+      </div>
+      <div class="footer-col">
+        <h4>RELATED TOOLS</h4>
+        <div id="related-tools"></div>
+        <a href="https://calc-hq.ca/" class="more-tools-link" rel="noopener"><strong>More Tools</strong> → Calc-HQ.ca</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 MarginalTaxCalc.ca — Part of the <a href="https://calc-hq.ca/" rel="noopener">Calc-HQ.ca</a> network</span>
+      <span>For informational purposes only. Not tax advice.</span>
+    </div>
+  </div>
 </footer>
 
 <script src="js/config.js"></script>
 <script src="js/calculator.js"></script>
 <script src="js/network.js"></script>
+<script>
+  var hamburger = document.querySelector('.hamburger');
+  var mobileNav = document.getElementById('mobile-nav');
+  var overlay = document.getElementById('mobile-overlay');
+  function toggleMenu() {
+    var isOpen = hamburger.classList.toggle('active');
+    mobileNav.classList.toggle('active', isOpen);
+    overlay.classList.toggle('active', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+  }
+  function closeMenu() {
+    hamburger.classList.remove('active');
+    mobileNav.classList.remove('active');
+    overlay.classList.remove('active');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+  if (hamburger) {
+    hamburger.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', closeMenu);
+    mobileNav.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', closeMenu); });
+  }
+</script>
 </body>
 </html>

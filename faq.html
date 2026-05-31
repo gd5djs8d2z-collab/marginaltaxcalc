@@ -7,7 +7,7 @@
   <meta name="description" content="Frequently asked questions about Ontario's marginal tax rates, brackets, surtax, CPP2, and how to use the 2026 marginal tax calculator." />
   <link rel="canonical" href="https://marginaltaxcalc.ca/faq.html" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7744853829365165" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css?v=marginal-v2" />
 </head>
 <body>
 
@@ -18,14 +18,26 @@
       <span class="logo-maple">🍁</span>
       <span class="logo-text">Marginal Tax Calc</span>
     </a>
-    <nav class="site-nav">
+    <nav class="site-nav" aria-label="Main navigation">
       <a href="index.html">Home</a>
-      <a href="faq.html">FAQ</a>
+      <a href="faq.html" class="active">FAQ</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
+    <button class="hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+
+<!-- Mobile nav overlay -->
+<div class="mobile-nav-overlay" id="mobile-overlay"></div>
+<nav class="mobile-nav" id="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="faq.html">FAQ</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</nav>
 
 <section class="page-hero">
   <div class="container">
@@ -101,9 +113,9 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
-      <div class="footer-col footer-brand">
-        <div class="footer-brand-name">Marginal Tax Calc</div>
-        <p>Free Ontario marginal tax rate calculator for 2026. Combines federal and provincial brackets, CPP, EI, and surtax.</p>
+      <div class="footer-brand">
+        <div class="logo">🍁 MarginalTaxCalc.ca</div>
+        <p>Ontario marginal tax rate calculations for 2026. All calculations run in your browser. No data stored.</p>
       </div>
       <div class="footer-col">
         <h4>PAGES</h4>
@@ -120,26 +132,40 @@
       </div>
       <div class="footer-col">
         <h4>RELATED TOOLS</h4>
-        <a href="https://ontariotakehomecalc.ca" rel="noopener">OntarioTakeHomeCalc.ca &#x2014; Estimate your Ontario net pay after all deductions</a>
-        <a href="https://ontarioincometaxcalc.ca" rel="noopener">OntarioIncomeTaxCalc.ca &#x2014; Calculate your combined federal and Ontario income tax</a>
-        <a href="https://ontarioraisecalc.ca" rel="noopener">OntarioRaiseCalc.ca &#x2014; Calculate the impact of a raise on your take-home pay</a>
-      </div>
-      <div class="footer-col">
-        <h4>MORE TOOLS</h4>
-        <a href="https://calc-hq.ca" class="more-tools-link" target="_blank" rel="noopener noreferrer">
-          <span class="more-tools-title">Calc-HQ.ca</span>
-          <span class="subtext">Canadian payroll, tax, and contribution calculators</span>
-        </a>
+        <div id="related-tools"></div>
+        <a href="https://calc-hq.ca/" class="more-tools-link" rel="noopener"><strong>More Tools</strong> → Calc-HQ.ca</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 marginaltaxcalc.ca — For general information only. Not tax advice.</span>
-      <span>Ontario, Canada</span>
+      <span>© 2026 MarginalTaxCalc.ca — Part of the <a href="https://calc-hq.ca/" rel="noopener">Calc-HQ.ca</a> network</span>
+      <span>For informational purposes only. Not tax advice.</span>
     </div>
   </div>
 </footer>
 
 <script src="js/config.js"></script>
 <script src="js/network.js"></script>
+<script>
+  var hamburger = document.querySelector('.hamburger');
+  var mobileNav = document.getElementById('mobile-nav');
+  var overlay = document.getElementById('mobile-overlay');
+  function toggleMenu() {
+    var isOpen = hamburger.classList.toggle('active');
+    mobileNav.classList.toggle('active', isOpen);
+    overlay.classList.toggle('active', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+  }
+  function closeMenu() {
+    hamburger.classList.remove('active');
+    mobileNav.classList.remove('active');
+    overlay.classList.remove('active');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+  if (hamburger) {
+    hamburger.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', closeMenu);
+    mobileNav.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', closeMenu); });
+  }
+</script>
 </body>
 </html>
