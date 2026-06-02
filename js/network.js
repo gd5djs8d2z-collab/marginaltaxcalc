@@ -1,4 +1,4 @@
-// network.js — marginaltaxcalc.ca
+// network.js — ontariomarginaltaxcalc.ca
 // Ontario Payroll cluster — related tools & GA4 injection
 
 (function () {
@@ -119,7 +119,7 @@
         '</div>' +
       '</div>' +
       '<div class="footer-bottom">' +
-        '<span>\u00a9 2026 marginaltaxcalc.ca \u2014 For general information only. Not tax advice.</span>' +
+        '<span>\u00a9 2026 ontariomarginaltaxcalc.ca \u2014 For general information only. Not tax advice.</span>' +
         '<span>Ontario, Canada</span>' +
       '</div>';
   }

@@ -1,4 +1,4 @@
-// config.js — marginaltaxcalc.ca
+// config.js — ontariomarginaltaxcalc.ca
 // 2026 Canadian Tax Rates — Ontario Jurisdiction
 // Source: CRA T4032-ON, ESDC EI/CPP bulletins
 
