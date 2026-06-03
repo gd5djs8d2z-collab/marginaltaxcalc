@@ -89,8 +89,8 @@
 
     container.innerHTML =
       '<div class="footer-grid">' +
-        '<div class="footer-col">' +
-          '<div class="footer-brand-name">Marginal Tax Calc</div>' +
+        '<div class="footer-brand">' +
+          '<div class="logo">🍁 Ontario Marginal Tax Calc</div>' +
           '<p>Free Ontario marginal tax rate calculator for 2026. Combines federal and provincial brackets, CPP, EI, and surtax.</p>' +
         '</div>' +
         '<div class="footer-col">' +
@@ -119,7 +119,7 @@
         '</div>' +
       '</div>' +
       '<div class="footer-bottom">' +
-        '<span>\u00a9 2026 ontariomarginaltaxcalc.ca \u2014 For general information only. Not tax advice.</span>' +
+        '<span>\u00a9 2026 Ontario Marginal Tax Calc \u2014 For general information only. Not tax advice.</span>' +
         '<span>Ontario, Canada</span>' +
       '</div>';
   }

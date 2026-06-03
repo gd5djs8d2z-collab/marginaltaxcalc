@@ -694,7 +694,7 @@ details p {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
   gap: 32px;
   padding-bottom: 24px;
   margin-bottom: 20px;
@@ -933,7 +933,7 @@ details p {
 
 /* 1100px */
 @media (max-width: 1100px) {
-  .footer-grid { grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 20px; }
+  .footer-grid { grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr; gap: 20px; }
 }
 
 /* 1024px — hamburger breakpoint */
