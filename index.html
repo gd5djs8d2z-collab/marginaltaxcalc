@@ -31,7 +31,7 @@
   <!-- AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7744853829365165" crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" href="css/style.css?v=marginal-v2" />
+  <link rel="stylesheet" href="css/style.css?v=marginal-v3" />
   <meta name="google-site-verification" content="PgO37bBKcFoncwsiUF5dKUsod-m10dEnrMXLLcPaNaY" />
 </head>
 <body>
@@ -48,6 +48,7 @@
       <a href="faq.html">FAQ</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
+      <a href="disclaimer.html">Legal</a>
     </nav>
     <button class="hamburger" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -62,6 +63,7 @@
   <a href="faq.html">FAQ</a>
   <a href="about.html">About</a>
   <a href="contact.html">Contact</a>
+  <a href="disclaimer.html">Legal</a>
 </nav>
 
 <!-- ── Hero ── -->
@@ -188,7 +190,7 @@
             </tr>
             <tr>
               <td>EI premiums</td>
-              <td>1.63%</td>
+              <td>1.64%</td>
               <td class="mono" id="bd-ei">—</td>
             </tr>
             <tr>
@@ -222,11 +224,11 @@
       <p>The Ontario Marginal Tax Rate Calculator tells you the combined rate you'll pay on an <strong>additional</strong> dollar (or chunk) of income in 2026 — not just your average rate across all earnings. This is the number that matters when deciding whether to take on extra work, make an RRSP contribution, accept a bonus, or withdraw from a registered account.</p>
       <p>It combines:</p>
       <ul>
-        <li><strong>Federal income tax</strong> — using the 2026 brackets from CRA T4032-ON (15% to 33%)</li>
+        <li><strong>Federal income tax</strong> — using the 2026 brackets from CRA (14% to 33%)</li>
         <li><strong>Ontario income tax</strong> — using the 2026 provincial brackets (5.05% to 13.16%)</li>
         <li><strong>Ontario surtax</strong> — an additional 20% or 56% layered on top of provincial tax once it exceeds $5,818 or $7,446</li>
-        <li><strong>CPP contributions</strong> — both CPP1 (5.95% up to $74,600 YMPE) and CPP2 (4.00% between $74,600 and $85,000)</li>
-        <li><strong>EI premiums</strong> — 1.63% up to $68,900 maximum insurable earnings</li>
+        <li><strong>CPP contributions</strong> — both CPP1 (5.95% up to $71,200 YMPE) and CPP2 (4.00% between $71,200 and $81,500)</li>
+        <li><strong>EI premiums</strong> — 1.64% up to $65,700 maximum insurable earnings</li>
         <li><strong>Ontario Health Premium (OHP)</strong> — a tiered levy on taxable income</li>
       </ul>
       <p>Once it knows your total tax at the new income level versus the original, it computes what percentage of the <em>additional</em> amount goes to government — that's your marginal rate. It also shows your net kept (dollars in pocket) and your overall effective rate across total income for context.</p>
@@ -250,13 +252,13 @@
 
       <h3>Federal Brackets (2026)</h3>
       <ul>
-        <li><strong>15%</strong> on the first $58,523</li>
+        <li><strong>14%</strong> on the first $58,523</li>
         <li><strong>20.5%</strong> on $58,523 to $117,045</li>
         <li><strong>26%</strong> on $117,045 to $181,440</li>
-        <li><strong>29%</strong> on $181,440 to $258,482</li>
+        <li><strong>29.29%</strong> on $181,440 to $258,482 (effective rate: 29% + 0.29% BPA phase-out)</li>
         <li><strong>33%</strong> on income above $258,482</li>
       </ul>
-      <p>The federal Basic Personal Amount credit of $16,452 × 14% = $2,303 reduces the federal tax otherwise payable.</p>
+      <p>The federal Basic Personal Amount is <strong>variable</strong> for 2026: $16,452 for most taxpayers, phasing down to $14,829 when net income exceeds $181,440. The credit is worth the BPA × 14%.</p>
 
       <h3>Ontario Brackets (2026)</h3>
       <ul>
@@ -269,50 +271,50 @@
       <p>Ontario also applies its Basic Personal Amount credit: $12,989 × 5.05% = approximately $656 off your Ontario tax.</p>
 
       <h3>Ontario Surtax — the Hidden Rate Boost</h3>
-      <p>Once your Ontario basic tax (before the surtax) exceeds $5,818, an additional 20% is added. Once it exceeds $7,446, another 36% stacks on top. This makes the effective Ontario marginal rate substantially higher than the headline bracket for mid-to-upper income earners. For example, at $100,000 in combined income an Ontarian in the 9.15% Ontario bracket who has crossed the first surtax threshold pays 9.15% × 1.20 = <strong>10.98%</strong> in Ontario tax on each additional dollar.</p>
+      <p>Once your Ontario basic tax (after BPA credit) exceeds $5,818, an additional 20% is added. Once it exceeds $7,446, another 36% stacks on top. This makes the effective Ontario marginal rate substantially higher than the headline bracket for mid-to-upper income earners. For example, in the 9.15% Ontario bracket where the first surtax threshold has been crossed, the effective Ontario rate becomes 9.15% × 1.20 = <strong>10.98%</strong> on each additional dollar.</p>
 
       <h3>CPP and EI — Marginal Payroll Contributions</h3>
-      <p>If your income is still below the CPP Year's Maximum Pensionable Earnings ($74,600) or Maximum Insurable Earnings for EI ($68,900), each additional dollar of employment income also triggers CPP and EI deductions. CPP1 costs you 5.95 cents on every dollar, CPP2 costs 4.00 cents on earnings from $74,600 to $85,000. EI costs 1.63 cents per dollar up to the ceiling. These are hard to ignore at lower incomes — at $50,000, CPP and EI alone add roughly 7.58 percentage points to your marginal rate.</p>
+      <p>If your income is still below the CPP Year's Maximum Pensionable Earnings ($71,200) or Maximum Insurable Earnings for EI ($65,700), each additional dollar of employment income also triggers CPP and EI deductions. CPP1 costs you 5.95 cents on every dollar, CPP2 costs 4.00 cents on earnings from $71,200 to $81,500. EI costs 1.64 cents per dollar up to the ceiling. These are hard to ignore at lower incomes — at $50,000, CPP and EI alone add roughly 7.59 percentage points to your marginal rate.</p>
     </section>
 
     <!-- ── Example Calculations ── -->
     <section class="content-section">
       <h2>Example Calculations — Real Ontario Numbers (2026)</h2>
-      <p>The following examples show what happens to $10,000 of additional employment income at three common income levels. All figures use 2026 rates as published by CRA and ESDC.</p>
+      <p>The following examples show what happens to $10,000 of additional employment income at three common income levels. All figures use 2026 rates sourced from CRA and ESDC.</p>
 
       <h3>Example 1: $55,000 → $65,000 (cross the federal bracket)</h3>
       <p>At $55,000 of current income, the next $10,000 straddles the $58,523 federal threshold:</p>
       <ul>
-        <li>Federal tax on the first $3,523 (at 15%): $528.45</li>
+        <li>Federal tax on the first $3,523 (at 14%): $493.22</li>
         <li>Federal tax on the remaining $6,477 (at 20.5%): $1,327.79</li>
         <li>Ontario tax on $10,000 at 9.15% (bracket applies throughout): $915.00</li>
         <li>CPP1 on $10,000 at 5.95%: $595.00</li>
-        <li>EI on $10,000 at 1.63%: $163.00</li>
+        <li>EI on $10,000 at 1.64%: $164.00</li>
         <li>OHP: minimal additional at this income range</li>
       </ul>
       <p><strong>Approximate combined marginal rate: ~35–37%.</strong> You keep roughly $6,300–$6,500 of the $10,000.</p>
 
       <h3>Example 2: $80,000 → $90,000 (mid-range, CPP2 zone)</h3>
-      <p>At $80,000 current income, you are past CPP1's YMPE ($74,600) and earning CPP2-eligible income. For the $10,000 added:</p>
+      <p>At $80,000 current income, you are past CPP1's YMPE ($71,200) and earning CPP2-eligible income. For the $10,000 added:</p>
       <ul>
         <li>Federal tax at 20.5%: $2,050.00</li>
         <li>Ontario tax at 9.15% (with surtax): approximately $1,098 (surtax applies)</li>
-        <li>CPP2 on $5,000 (up to $85,000 YAMPE ceiling): $200.00</li>
-        <li>EI: capped out past $68,900, so $0</li>
+        <li>CPP2 on $1,500 (up to $81,500 YAMPE ceiling): $60.00</li>
+        <li>EI: capped out past $65,700, so $0</li>
       </ul>
       <p><strong>Approximate combined marginal rate: ~33–34%.</strong> You keep roughly $6,600–$6,700.</p>
 
       <h3>Example 3: $200,000 → $210,000 (top brackets, Ontario surtax fully active)</h3>
-      <p>At $200,000, you are in the 29% federal bracket and the 13.16% Ontario bracket. The Ontario surtax is fully engaged (both 20% and 36% layers).</p>
+      <p>At $200,000, you are in the 29.29% federal bracket and the 12.16% Ontario bracket. The Ontario surtax is fully engaged (both 20% and 36% layers).</p>
       <ul>
-        <li>Federal tax at 29%: $2,900.00</li>
+        <li>Federal tax at 29.29%: $2,929.00</li>
         <li>Ontario basic tax at 12.16%: $1,216.00</li>
-        <li>Ontario surtax (56% of Ontario basic): approximately $681</li>
+        <li>Ontario surtax (56% of Ontario basic increment): approximately $681</li>
         <li>CPP: capped out, $0</li>
         <li>EI: capped out, $0</li>
         <li>OHP: at max tier, $0 incremental</li>
       </ul>
-      <p><strong>Approximate combined marginal rate: ~47–49%.</strong> You keep roughly $5,100–$5,300.</p>
+      <p><strong>Approximate combined marginal rate: ~48–50%.</strong> You keep roughly $5,000–$5,200.</p>
 
       <table class="example-table" aria-label="Marginal rate comparison">
         <thead>
@@ -327,7 +329,7 @@
         <tbody>
           <tr>
             <td>$55K → $65K</td>
-            <td>15% / 20.5%</td>
+            <td>14% / 20.5%</td>
             <td>9.15%</td>
             <td>~35–37%</td>
             <td>~$6,300</td>
@@ -341,22 +343,16 @@
           </tr>
           <tr>
             <td>$200K → $210K</td>
-            <td>29%</td>
+            <td>29.29%</td>
             <td>12.16% + full surtax</td>
-            <td>~47–49%</td>
-            <td>~$5,200</td>
+            <td>~48–50%</td>
+            <td>~$5,100</td>
           </tr>
         </tbody>
       </table>
 
       <p style="margin-top:12px; font-size:.85rem; color:var(--text-muted);">Note: "Approximate" figures reflect the incremental tax method used by this calculator. Minor differences from year-end T1 filing may occur due to rounding and mid-bracket transitions. For tax-planning decisions, verify with a CPA or tax advisor.</p>
     </section>
-
-
-
-
-
-
 
     <!-- Ad slot 3 -->
     <div class="ad-slot">
@@ -369,7 +365,7 @@
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-    <!-- Methodology link -->
+    <!-- Methodology link — only on calculator page per EMD methodology-link governance -->
     <p style="text-align:center; margin:28px 0 8px; font-size:0.88rem;"><a href="https://calc-hq.ca/methodology/marginal-tax/" style="color:var(--accent); font-weight:600;">Full methodology: Marginal Tax Calculator – Calc-HQ.ca</a></p>
 
   </div><!-- /container -->

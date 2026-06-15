@@ -21,7 +21,7 @@
     }
   })();
 
-  // ── Network tools — Ontario Payroll cluster only ───────────────────────────
+  // ── Network tools — Ontario cluster (8 members) ──────────────────────────
   var NETWORK_TOOLS = [
     {
       name: 'OntarioTakeHomeCalc.ca',
@@ -38,40 +38,50 @@
       live: true,
     },
     {
+      name: 'OntarioBonusTaxCalc.ca',
+      label: 'OntarioBonusTaxCalc.ca — Calculate the tax on your Ontario bonus',
+      url: 'https://ontariobonustaxcalc.ca',
+      desc: 'Calculate the tax on your Ontario bonus',
+      live: true,
+    },
+    {
       name: 'OntarioRaiseCalc.ca',
       label: 'OntarioRaiseCalc.ca — Calculate the impact of a raise on your take-home pay',
       url: 'https://ontarioraisecalc.ca',
       desc: 'Calculate the impact of a raise on your take-home pay',
       live: true,
     },
+    {
+      name: 'OntarioCommissionTaxCalc.ca',
+      label: 'OntarioCommissionTaxCalc.ca — Calculate the tax on your Ontario commission income',
+      url: 'https://ontariocommissiontaxcalc.ca',
+      desc: 'Calculate the tax on your Ontario commission income',
+      live: true,
+    },
+    {
+      name: 'OntarioSeverancePayCalc.ca',
+      label: 'OntarioSeverancePayCalc.ca — Estimate your Ontario severance pay entitlements',
+      url: 'https://ontarioseverancepaycalc.ca',
+      desc: 'Estimate your Ontario severance pay entitlements',
+      live: true,
+    },
+    {
+      name: 'OntarioTerminationPayCalc.ca',
+      label: 'OntarioTerminationPayCalc.ca — Calculate your Ontario termination pay',
+      url: 'https://ontarioterminationpaycalc.ca',
+      desc: 'Calculate your Ontario termination pay',
+      live: true,
+    },
+    {
+      name: 'OntarioSelfEmployedTaxCalc.ca',
+      label: 'OntarioSelfEmployedTaxCalc.ca — Estimate your Ontario self-employment tax',
+      url: 'https://ontarioselfemployedtaxcalc.ca',
+      desc: 'Estimate your Ontario self-employment tax',
+      live: true,
+    },
   ];
 
   var CURRENT_HOST = window.location.hostname.replace(/^www\./, '');
-
-  // ── Related tools (main page) ─────────────────────────────────────────────
-  function renderRelatedTools() {
-    var container = document.getElementById('related-tools-list');
-    if (!container) return;
-
-    var tools = NETWORK_TOOLS.filter(function (t) {
-      return t.live && t.url.indexOf(CURRENT_HOST) === -1;
-    });
-
-    if (tools.length === 0) {
-      container.parentElement && (container.parentElement.style.display = 'none');
-      return;
-    }
-
-    var html = '';
-    tools.forEach(function (t) {
-      html +=
-        '<a href="' + t.url + '" class="tool-card" rel="noopener">' +
-        '<span class="tool-name">' + t.name + '</span>' +
-        '<span class="tool-desc">' + t.desc + '</span>' +
-        '</a>';
-    });
-    container.innerHTML = html;
-  }
 
   // ── Footer — 3-column: PAGES / LEGAL / RELATED TOOLS ─────────────────────
   function renderFooter() {
@@ -90,8 +100,8 @@
     container.innerHTML =
       '<div class="footer-grid">' +
         '<div class="footer-brand">' +
-          '<div class="logo">🍁 Ontario Marginal Tax Calc</div>' +
-          '<p>Free Ontario marginal tax rate calculator for 2026. Combines federal and provincial brackets, CPP, EI, and surtax.</p>' +
+          '<div class="logo">\uD83C\uDF41 Ontario Marginal Tax Calc</div>' +
+          '<p>Free Ontario marginal tax rate calculator for 2026. Estimates only. Not tax advice.</p>' +
         '</div>' +
         '<div class="footer-col">' +
           '<h4>PAGES</h4>' +
@@ -109,17 +119,10 @@
         '<div class="footer-col">' +
           '<h4>RELATED TOOLS</h4>' +
           toolLinks +
-                '</div>' +
-        '<div class="footer-col">' +
-          '<h4>MORE TOOLS</h4>' +
-          '<a href="https://calc-hq.ca" class="more-tools-link" target="_blank" rel="noopener noreferrer">' +
-            '<span class="more-tools-title">Calc-HQ.ca</span>' +
-            '<span class="subtext">Canadian payroll, tax, and contribution calculators</span>' +
-          '</a>' +
         '</div>' +
       '</div>' +
       '<div class="footer-bottom">' +
-        '<span>\u00a9 2026 Ontario Marginal Tax Calc \u2014 For general information only. Not tax advice.</span>' +
+        '<span>\u00a9 2026 Ontario Marginal Tax Calc \u2014 Estimates only. Not tax or legal advice. \u00b7 <a href="privacy-policy.html">Privacy Policy</a> \u00b7 <a href="disclaimer.html">Disclaimer</a> \u00b7 <a href="terms.html">Terms</a> \u00b7 <a href="contact.html">Contact</a> \u00b7 <a href="faq.html">FAQ</a></span>' +
         '<span>Ontario, Canada</span>' +
       '</div>';
   }

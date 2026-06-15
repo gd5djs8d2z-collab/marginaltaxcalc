@@ -1,6 +1,7 @@
-// calculator.js — marginaltaxcalc.ca
+// calculator.js — ontariomarginaltaxcalc.ca
 // Ontario Marginal Tax Calculator 2026
 // Computes marginal tax rate on additional income, net kept, and effective rate
+// Source: authority-pack.json (CRA T4127, Ontario Taxation Act, ESDC)
 
 (function () {
   'use strict';
@@ -17,17 +18,36 @@
     return tax;
   }
 
+  // Federal BPA is variable: phases down from max to min for net income $181,440–$258,482
+  function getFederalBPA(netIncome) {
+    if (netIncome <= FEDERAL_BPA_PHASEOUT_START) return FEDERAL_BPA_MAX;
+    if (netIncome >= FEDERAL_BPA_PHASEOUT_END) return FEDERAL_BPA_MIN;
+    return FEDERAL_BPA_MAX - (netIncome - FEDERAL_BPA_PHASEOUT_START) *
+      (FEDERAL_BPA_MAX - FEDERAL_BPA_MIN) / (FEDERAL_BPA_PHASEOUT_END - FEDERAL_BPA_PHASEOUT_START);
+  }
+
+  function calcFederalTax(income) {
+    const gross = calcBracketTax(income, FEDERAL_BRACKETS);
+    const bpa = getFederalBPA(income);
+    const bpaCredit = bpa * FEDERAL_CREDIT_RATE;
+    const net = Math.max(0, gross - bpaCredit);
+    return { gross, bpa, bpaCredit, net };
+  }
+
   function calcOntarioBasicTax(income) {
     return calcBracketTax(income, ONTARIO_BRACKETS);
   }
 
-  function calcOntarioSurtax(ontarioBasicTax) {
+  // Ontario surtax: applied on Ontario base tax (after BPA credit deduction)
+  // Authority pack formula: surtax = max(0, ON_tax - 5818) × 0.20 + max(0, ON_tax - 7446) × 0.36
+  // where ON_tax = base Ontario tax minus BPA credit
+  function calcOntarioSurtax(ontarioNetBasicTax) {
     let surtax = 0;
-    if (ontarioBasicTax > ONTARIO_SURTAX_THRESHOLD_1) {
-      surtax += (ontarioBasicTax - ONTARIO_SURTAX_THRESHOLD_1) * ONTARIO_SURTAX_RATE_1;
+    if (ontarioNetBasicTax > ONTARIO_SURTAX_THRESHOLD_1) {
+      surtax += (ontarioNetBasicTax - ONTARIO_SURTAX_THRESHOLD_1) * ONTARIO_SURTAX_RATE_1;
     }
-    if (ontarioBasicTax > ONTARIO_SURTAX_THRESHOLD_2) {
-      surtax += (ontarioBasicTax - ONTARIO_SURTAX_THRESHOLD_2) * ONTARIO_SURTAX_RATE_2;
+    if (ontarioNetBasicTax > ONTARIO_SURTAX_THRESHOLD_2) {
+      surtax += (ontarioNetBasicTax - ONTARIO_SURTAX_THRESHOLD_2) * ONTARIO_SURTAX_RATE_2;
     }
     return surtax;
   }
@@ -40,19 +60,12 @@
     return { basic, bpaCredit, netBasic, surtax, total: netBasic + surtax };
   }
 
-  function calcFederalTax(income) {
-    const gross = calcBracketTax(income, FEDERAL_BRACKETS);
-    const bpaCredit = FEDERAL_BPA * FEDERAL_CREDIT_RATE;
-    const net = Math.max(0, gross - bpaCredit);
-    return { gross, bpaCredit, net };
-  }
-
   function calcCPP(income) {
-    // CPP1
-    const cpp1Eligible = Math.min(Math.max(0, income - CPP1_BASIC_EXEMPTION), CPP1_YMPE - CPP1_BASIC_EXEMPTION);
-    const cpp1 = Math.min(cpp1Eligible * CPP1_RATE, CPP1_MAX_CONTRIBUTION);
+    // CPP1 — Base CPP
+    const cpp1Pensionable = Math.max(0, Math.min(income, CPP1_YMPE) - CPP1_BASIC_EXEMPTION);
+    const cpp1 = Math.min(cpp1Pensionable * CPP1_RATE, CPP1_MAX_CONTRIBUTION);
 
-    // CPP2 — on earnings between YMPE and YAMPE
+    // CPP2 — Enhanced CPP on earnings between YMPE and YAMPE
     const cpp2Eligible = Math.max(0, Math.min(income, CPP2_YAMPE) - CPP1_YMPE);
     const cpp2 = Math.min(cpp2Eligible * CPP2_RATE, CPP2_MAX_CONTRIBUTION);
 
@@ -72,13 +85,12 @@
         return Math.min(raw, tier.cap);
       }
     }
-    // Last tier (300k+)
+    // Last tier fallback
     const last = OHP_SCHEDULE[OHP_SCHEDULE.length - 1];
     return last.premium;
   }
 
   // ── Marginal rate detection ─────────────────────────────────────────────────
-  // Returns the bracket rate at a specific income point
 
   function getMarginalBracketRate(income, brackets) {
     let rate = brackets[0].rate;
@@ -115,12 +127,12 @@
     const totalTaxNew = fedNew.net + ontNew.total + cppNew.total + eiNew.premium + ohpNew;
 
     // Incremental taxes on the additional income
-    const fedIncremental  = fedNew.net - fedCurrent.net;
-    const ontIncremental  = ontNew.total - ontCurrent.total;
-    const ontSurtaxIncremental = ontNew.surtax - ontCurrent.surtax;
-    const cppIncremental  = cppNew.total - cppCurrent.total;
-    const eiIncremental   = eiNew.premium - eiCurrent.premium;
-    const ohpIncremental  = ohpNew - ohpCurrent;
+    const fedIncremental        = fedNew.net - fedCurrent.net;
+    const ontIncremental        = ontNew.total - ontCurrent.total;
+    const ontSurtaxIncremental  = ontNew.surtax - ontCurrent.surtax;
+    const cppIncremental        = cppNew.total - cppCurrent.total;
+    const eiIncremental         = eiNew.premium - eiCurrent.premium;
+    const ohpIncremental        = ohpNew - ohpCurrent;
 
     const totalIncremental = fedIncremental + ontIncremental + cppIncremental + eiIncremental + ohpIncremental;
     const marginalRate = totalIncremental / additionalIncome;
@@ -163,7 +175,8 @@
 
   // ── Formatting ──────────────────────────────────────────────────────────────
 
-  function fmt(n, decimals = 2) {
+  function fmt(n, decimals) {
+    if (decimals === undefined) decimals = 2;
     return n.toLocaleString('en-CA', {
       minimumFractionDigits: decimals,
       maximumFractionDigits: decimals,
@@ -183,12 +196,12 @@
   function getEl(id) { return document.getElementById(id); }
 
   function showError(msg) {
-    const el = getEl('error-msg');
+    var el = getEl('error-msg');
     if (el) { el.textContent = msg; el.style.display = 'block'; }
   }
 
   function hideError() {
-    const el = getEl('error-msg');
+    var el = getEl('error-msg');
     if (el) el.style.display = 'none';
   }
 
@@ -221,14 +234,14 @@
     getEl('bd-total').textContent            = fmtDollar(r.totalIncremental);
 
     // Sanity bar
-    const keptPct = Math.max(0, Math.min(100, (r.netKept / r.additionalIncome) * 100));
-    const taxPct  = 100 - keptPct;
-    const barKept = getEl('bar-kept');
-    const barTax  = getEl('bar-tax');
+    var keptPct = Math.max(0, Math.min(100, (r.netKept / r.additionalIncome) * 100));
+    var taxPct  = 100 - keptPct;
+    var barKept = getEl('bar-kept');
+    var barTax  = getEl('bar-tax');
     if (barKept) barKept.style.width = keptPct.toFixed(1) + '%';
     if (barTax)  barTax.style.width  = taxPct.toFixed(1) + '%';
-    const barKeptLabel = getEl('bar-kept-label');
-    const barTaxLabel  = getEl('bar-tax-label');
+    var barKeptLabel = getEl('bar-kept-label');
+    var barTaxLabel  = getEl('bar-tax-label');
     if (barKeptLabel) barKeptLabel.textContent = 'You keep ' + keptPct.toFixed(1) + '%';
     if (barTaxLabel)  barTaxLabel.textContent  = 'Tax ' + taxPct.toFixed(1) + '%';
   }
@@ -237,11 +250,11 @@
     e.preventDefault();
     hideError();
 
-    const currentRaw     = getEl('input-current').value.replace(/[^0-9.]/g, '');
-    const additionalRaw  = getEl('input-additional').value.replace(/[^0-9.]/g, '');
+    var currentRaw     = getEl('input-current').value.replace(/[^0-9.]/g, '');
+    var additionalRaw  = getEl('input-additional').value.replace(/[^0-9.]/g, '');
 
-    const currentIncome    = parseFloat(currentRaw) || 0;
-    const additionalIncome = parseFloat(additionalRaw) || 0;
+    var currentIncome    = parseFloat(currentRaw) || 0;
+    var additionalIncome = parseFloat(additionalRaw) || 0;
 
     if (additionalIncome <= 0) {
       showError('Please enter an additional income amount greater than $0.');
@@ -256,7 +269,7 @@
       return;
     }
 
-    const result = calculate(currentIncome, additionalIncome);
+    var result = calculate(currentIncome, additionalIncome);
     if (!result) {
       showError('Unable to calculate. Please check your inputs.');
       return;
@@ -269,25 +282,25 @@
   // ── Number formatting on inputs ─────────────────────────────────────────────
 
   function formatInputOnBlur(inputEl) {
-    const raw = parseFloat(inputEl.value.replace(/[^0-9.]/g, ''));
+    var raw = parseFloat(inputEl.value.replace(/[^0-9.]/g, ''));
     if (!isNaN(raw)) {
       inputEl.value = raw.toLocaleString('en-CA', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
     }
   }
 
   function stripFormatOnFocus(inputEl) {
-    const raw = inputEl.value.replace(/[^0-9.]/g, '');
+    var raw = inputEl.value.replace(/[^0-9.]/g, '');
     inputEl.value = raw;
   }
 
   // ── Init ────────────────────────────────────────────────────────────────────
 
   document.addEventListener('DOMContentLoaded', function () {
-    const form = getEl('tax-form');
+    var form = getEl('tax-form');
     if (form) form.addEventListener('submit', handleSubmit);
 
     ['input-current', 'input-additional'].forEach(function (id) {
-      const el = getEl(id);
+      var el = getEl(id);
       if (!el) return;
       el.addEventListener('blur',  function () { formatInputOnBlur(el); });
       el.addEventListener('focus', function () { stripFormatOnFocus(el); });

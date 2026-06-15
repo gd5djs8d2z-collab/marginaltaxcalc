@@ -7,7 +7,7 @@
   <meta name="description" content="About ontariomarginaltaxcalc.ca — how our Ontario marginal tax calculator works, data sources, and methodology for 2026." />
   <link rel="canonical" href="https://ontariomarginaltaxcalc.ca/about.html" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7744853829365165" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="css/style.css?v=marginal-v2" />
+  <link rel="stylesheet" href="css/style.css?v=marginal-v3" />
 </head>
 <body>
 
@@ -23,6 +23,7 @@
       <a href="faq.html">FAQ</a>
       <a href="about.html" class="active">About</a>
       <a href="contact.html">Contact</a>
+      <a href="disclaimer.html">Legal</a>
     </nav>
     <button class="hamburger" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -37,6 +38,7 @@
   <a href="faq.html">FAQ</a>
   <a href="about.html">About</a>
   <a href="contact.html">Contact</a>
+  <a href="disclaimer.html">Legal</a>
 </nav>
 
 <section class="page-hero">
@@ -55,27 +57,15 @@
   <h2>Data Sources</h2>
   <p>All rates and thresholds are sourced from official Canadian government publications:</p>
   <ul>
-    <li><strong>CRA T4032-ON</strong> (Payroll Deductions Tables — Ontario, 2026): federal and Ontario income tax brackets, Basic Personal Amounts</li>
-    <li><strong>ESDC Employment Insurance Regulations</strong>: 2026 EI rate (1.63%), MIE ($68,900)</li>
-    <li><strong>CRA CPP Rate Notice (2026)</strong>: CPP1 rate (5.95%), YMPE ($74,600), CPP2 rate (4.00%), YAMPE ($85,000)</li>
+    <li><strong>CRA T4127</strong> (Payroll Deductions Formulas, January 2026): federal and Ontario income tax brackets, Basic Personal Amounts</li>
+    <li><strong>ESDC Employment Insurance Regulations</strong>: 2026 EI rate (1.64%), MIE ($65,700)</li>
+    <li><strong>CRA CPP Rate Notice (2026)</strong>: CPP1 rate (5.95%), YMPE ($71,200), CPP2 rate (4.00%), YAMPE ($81,500)</li>
     <li><strong>Ontario Ministry of Finance</strong>: Ontario Health Premium tiered schedule</li>
-    <li><strong>Ontario Taxation Act</strong>: Ontario surtax thresholds and rates</li>
+    <li><strong>Ontario Taxation Act, 2007</strong>: Ontario surtax thresholds and rates</li>
   </ul>
 
-  <h2>Calculation Methodology</h2>
-  <p>The calculator uses an <strong>incremental difference method</strong>:</p>
-  <ol>
-    <li>Compute total tax (income tax + CPP + EI + OHP) at <em>current</em> income</li>
-    <li>Compute total tax at <em>current + additional</em> income</li>
-    <li>Divide the difference by the additional income amount</li>
-  </ol>
-  <p>This is the same approach used by CRA's bonus withholding method (Method 2 per T4130), and it captures the actual blended marginal rate across bracket transitions — not just the rate at a single point. The Ontario surtax, which is a non-linear function of Ontario basic tax, is computed correctly for both income levels before subtracting.</p>
-
-  <h2>Accuracy and Limitations</h2>
-  <p>This calculator is designed for employment income for Ontario residents. It does not model self-employment double CPP, Quebec abatement, capital gains inclusion rates, eligible dividend gross-up, or personal credits beyond the Basic Personal Amount. For a definitive tax calculation, use CRA-certified tax software or consult a Chartered Professional Accountant (CPA).</p>
-
-  <h2>Updates</h2>
-  <p>Rates are updated annually when CRA publishes the T4032-ON and ESDC releases EI and CPP parameters. The current build reflects 2026 rates as confirmed at publication time.</p>
+  <h2>Update Policy</h2>
+  <p>Rates are updated annually when CRA publishes the T4127 and ESDC releases EI and CPP parameters. The current build reflects 2026 rates as confirmed at publication time. Some CPP and EI values are estimated from 2025 statutory rates with indexation applied and will be re-verified once CRA publishes confirmed 2026 figures.</p>
 
   <p><a href="/">← Back to Calculator</a></p>
 </main>
